@@ -1,0 +1,56 @@
+README file
+-------------------------
+
+- What is this program for?
+ 	This program is an implementation of the Naive Bayes Classifier in Java. 
+
+- Compile the program (in Unix environment)
+	$make
+
+- Run the program
+	$java NB_classifier (or NB_classifier)
+
+- Check Result 
+	$cat Result.txt
+
+- Clean compiled files and output results
+	$make clean
+
+- Overview the program code:
+	There are totally 4 Java source code files, which contains 7 major methods include main() and exclude constructors for objects.
+	
+	CF_Node.java		**no specific method included in this object
+	CF_Tree.java		initialize(), clear()
+	myDB.java		file_import()
+	NB_classifier.java	classifier_build(), prob_table_build(), prediction(), main()
+
+   CF_Node.java   -   a tree node class, which is used to store data. It works as building element of CF_Tree
+   CF_Tree.java   -  a tree structure to store the frequency of attribute combinations (eg. when wheather=rain, temperature = cool, etc)
+   myDB.java   -   a database class which is used to store all the data from input file. the stored data include attribute names, tuples
+   NB_classifier.java   -   a Naive Bayes Classifier which is the major part of this implementation. It uses training data to build classification knowledge and do prediction for testing data.
+
+
+- The following is the program structure:
+	
+	main() ---->	read input 
+			----> check file exist 
+			----> target attribute exist
+
+	      ----->	building databases for both training data and testing data 
+			----> read in data and remove redundancy:  file_import()
+
+	     ----->	building a Naive Bayes Classifier baed on the training set	classifier_build()
+			----> build a tree structure to store the occurrences of each attribute pair (ai|cj)	
+			----> based on the tree, calculate the probability of each attribute pair P(ai | cj)	prob_table_build()
+
+	     ----->	using the classifier to do prediction of target attribute on testing data
+			----> prediction()
+
+	     ----->	output the result into "Result.txt" file 
+
+
+- Data Noise Handling: ...
+
+- Bonus Question #1: ...
+
+				
