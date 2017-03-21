@@ -1,0 +1,62 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.Id3 
+Relation:     data2
+Instances:    50
+Attributes:   5
+              outlook
+              temperature
+              humidity
+              windy
+              playtennis
+Test mode:user supplied test set:     14instances
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+humidity = high
+|  outlook = sunny: n
+|  outlook = overcast
+|  |  temperature = hot: n
+|  |  temperature = mild: p
+|  |  temperature = cool: null
+|  outlook = rain
+|  |  windy = false: p
+|  |  windy = true: n
+humidity = normal
+|  temperature = hot: p
+|  temperature = mild: p
+|  temperature = cool
+|  |  outlook = sunny: p
+|  |  outlook = overcast: n
+|  |  outlook = rain: n
+
+Time taken to build model: 0 seconds
+
+=== Evaluation on test set ===
+=== Summary ===
+
+Correctly Classified Instances          11               78.5714 %
+Incorrectly Classified Instances         3               21.4286 %
+Kappa statistic                          0.5882
+Mean absolute error                      0.1667
+Root mean squared error                  0.3212
+Relative absolute error                 35.2713 %
+Root relative squared error             66.7198 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0.333      0.625     1         0.769      0.956    n
+                 0.667     0          1         0.667     0.8        0.956    p
+Weighted Avg.    0.786     0.119      0.866     0.786     0.789      0.956
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 5 0 | a = n
+ 3 6 | b = p
+

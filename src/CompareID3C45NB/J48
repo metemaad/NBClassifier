@@ -1,0 +1,61 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     data2
+Instances:    50
+Attributes:   5
+              outlook
+              temperature
+              humidity
+              windy
+              playtennis
+Test mode:user supplied test set:     14instances
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+humidity = high
+|   outlook = sunny: n (12.0)
+|   outlook = overcast: p (7.0/1.0)
+|   outlook = rain: n (2.0/1.0)
+humidity = normal
+|   windy = false: p (16.0)
+|   windy = true
+|   |   outlook = sunny: p (5.0)
+|   |   outlook = overcast: n (6.0/1.0)
+|   |   outlook = rain: n (2.0/1.0)
+
+Number of Leaves  : 	7
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0 seconds
+
+=== Evaluation on test set ===
+=== Summary ===
+
+Correctly Classified Instances          12               85.7143 %
+Incorrectly Classified Instances         2               14.2857 %
+Kappa statistic                          0.7143
+Mean absolute error                      0.1871
+Root mean squared error                  0.3257
+Relative absolute error                 39.5903 %
+Root relative squared error             67.6559 %
+Total Number of Instances               14     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0.222      0.714     1         0.833      0.933    n
+                 0.778     0          1         0.778     0.875      0.933    p
+Weighted Avg.    0.857     0.079      0.898     0.857     0.86       0.933
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 5 0 | a = n
+ 2 7 | b = p
+
