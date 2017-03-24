@@ -2,55 +2,148 @@ README file
 -------------------------
 
 - What is this program for?
- 	This program is an implementation of the Naive Bayes Classifier in Java. 
+     This program is an implementation of the Naive Bayes Classifier in Java.
 
-- Compile the program (in Unix environment)
-	$make
+- Compile the program (in bluenose environment)
+    $ javac main.java
 
 - Run the program
-	$java NB_classifier (or NB_classifier)
+    $java main
 
-- Check Result 
-	$cat Result.txt
-
-- Clean compiled files and output results
-	$make clean
+- Check Result
+    $cat Result.txt
 
 - Overview the program code:
-	There are totally 4 Java source code files, which contains 7 major methods include main() and exclude constructors for objects.
-	
-	CF_Node.java		**no specific method included in this object
-	CF_Tree.java		initialize(), clear()
-	myDB.java		file_import()
-	NB_classifier.java	classifier_build(), prob_table_build(), prediction(), main()
+    There is totally 11 Java source code files. this file shows the important function and classes. For more information go to doc folder (doc/index.html) there is a full HTML help file that covers the code with more details. also, there are comments on the source code for more readability.
 
-   CF_Node.java   -   a tree node class, which is used to store data. It works as building element of CF_Tree
-   CF_Tree.java   -  a tree structure to store the frequency of attribute combinations (eg. when wheather=rain, temperature = cool, etc)
-   myDB.java   -   a database class which is used to store all the data from input file. the stored data include attribute names, tuples
-   NB_classifier.java   -   a Naive Bayes Classifier which is the major part of this implementation. It uses training data to build classification knowledge and do prediction for testing data.
+    Attribute.java :
+    This file defines a structure for attributes. It has a list of classes in each attribute with cardinality information of it.
+
+    Classifier.java :
+    This is an interface for each classifier. there is no implementation on this file.
+
+    DataSetHandler.java :
+    This source code is responsible for handling the tasks related to dataset such as dividing dataset to train and test.
+
+    FileHandler.java :
+    this code is responsible for handling the tasks related to file. It reads the file, parses it and put it in a resident data structure in memory.
+
+    item.java :
+    this class defines each item and has functions to create them.
+
+    main.java :
+    this is the main class and runs the code based on assignment requirements.
+
+    NBClassifier.java :
+    This class has all functions related to classifier such as calculating the probabilities.
+
+    NBPredResult.java :
+    this is a structure for results to show the probability of each class together.
+
+    ProbStruct.java :
+    this class is a node of a tree that saves all probabilities and the conditional probabilities.
+
+    subSetclass.java :
+     this class defines a structure for a subset. it has the subset class and attribute and related class.
+
+    UIAssignment5.java
+    this class defines all the user interface functions.
 
 
 - The following is the program structure:
-	
-	main() ---->	read input 
-			----> check file exist 
-			----> target attribute exist
 
-	      ----->	building databases for both training data and testing data 
-			----> read in data and remove redundancy:  file_import()
-
-	     ----->	building a Naive Bayes Classifier baed on the training set	classifier_build()
-			----> build a tree structure to store the occurrences of each attribute pair (ai|cj)	
-			----> based on the tree, calculate the probability of each attribute pair P(ai | cj)	prob_table_build()
-
-	     ----->	using the classifier to do prediction of target attribute on testing data
-			----> prediction()
-
-	     ----->	output the result into "Result.txt" file 
+main() :
+---->main
+-------->uiAssignment5.getInputFile
+-------->FileHandler.loadData
+-------->FileHandler.getAttributes
+-------->uiAssignment5.selectTargetAttribute
+-------->uiAssignment51.Doyouhaveatestdataset
+-------->nbClassifier.train
+-------->printResult
+-------->dataSetHandler.DivideTrainAndTest
+-------->dataSetHandler.getTestDataset
+-------->dataSetHandler.getTrainDataset
+---->printResult
 
 
-- Data Noise Handling: ...
+ UIAssignment5.java:
+ ---->getInputFile()
+ ------>FileHandler.getFilePath
+ ---->selectTargetAttribute()
+ ---->numberoffoldsincrossvalidation()
+ ---->Doyouhaveatestdataset()
+ ---->verboseness()
 
-- Bonus Question #1: ...
+  FileHandler.java:
+  ---->setFilename
+  ---->loadData
+  ---->getAttributes
+  ---->getDataset
+  ---->GetItemsinoneLine
+  ---->GetItemsValuesinoneLine
+  ---->getFilePath
+  ---->loadDataSet
+  ------>getFilePath
+  ------>Files.readAllLines
+  ------>GetItemsinoneLine
+  ------>GetItemsValuesinoneLine
 
-				
+ Classifier.java:
+ ---->void train(final Vector<Vector<item>> trainingData,final Vector<Attribute> attributes, final Attribute target);
+ ---->Vector<NBPredResult> prediction(Vector<item> data);
+
+ Attribute.java:
+ ---->addClass
+ ---->classTotal
+ ---->classCount
+ ---->equals
+ ---->toString
+
+ item.java:
+ ---->getAttributeName
+ ---->getvalue
+ ---->item
+ ---->toString
+
+
+NBClassifier.java:
+---->train
+------>DataSetHandler.subSet
+------>probability
+------>DataSetHandler.UpdateCounts
+---->probability
+---->getitemprob
+---->prediction
+------>getitemprob
+
+- Data Preprocessing and Noise Handling:
+I checked the datasets for missing values and fill the missing values with the appropriate value.
+I checked the datasets for redundancy. I use diffuse to compare the input file with itself for finding redundant rows.
+I also used this application to remove all the test cases from the train dataset.
+In order to use NB classifier, there is an independency assumption. I have checked the Pearson Chi-Square for finding dependant features:
+this is the results:
+temperature * Humidity | Pearson Chi-Square=5.667
+temperature * Windy | Pearson Chi-Square=    .729
+Humidity * Windy | Pearson Chi-Square    = .000
+outlook * temperature |Pearson Chi-Square    3.325
+therefore, using the NB classifier for this dataset is not a good idea. Moreover, there is an overlap between test dataset and train dataset
+that has a negative effect.
+
+- Bonus Question #1:
+I select SPECT Heart dataset which is a categorical dataset with 22 attributes from [1].
+for step 2 I used a random number generator to divide full dataset into train and test. the function implemented in DatasetHandler class
+in function DivideTrainAndTest. by passing 70 to this function, I divide train and test data set.
+ for step 3 I used weka on htotal.csv and my assignment. because of generating random dataset and test set in my implementation each time you
+ can see a sligthly diffrent result in accuracy which is acceptable because the train and test dataset are different each time.
+ my implementation run accuracy:
+Accuracy: 59.000000 / 81.000000
+Accuracy:72.8395061728395
+the results from weka using htotal.csv and selecting the 4 fold cross validation is in files wekaResultsNB, wekaResultsID3, and
+wekaResultsJ48
+the tables are available in file Document1.pdf
+My comment is that when we want to use a classifier we need to know it the strengths ans weaknesses of it first. Second, we need to know
+our dataset. it is very important to have a good underestaing about dataset. Then we can use the appropriate algorithm.
+
+
+[1] http://archive.ics.uci.edu/ml/datasets/SPECT+Heart

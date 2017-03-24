@@ -12,7 +12,7 @@ public class DataSetHandler {
     /**
      * dataset that the handler will work on it.
      */
-    Vector<Vector<item>> data;
+    private Vector<Vector<item>> data;
 
     /**
      * divided dataset into test and training sets
@@ -31,7 +31,7 @@ public class DataSetHandler {
      */
     public void FoldTrainAndTest(Vector<Vector<item>> data, int fold) {
         FoldedDataset=new Vector<>();
-        Vector<Vector<item>> tmpfold=new Vector<>();
+        Vector<Vector<item>> tmpfold;
         int n=data.size()/fold;
         for (int j=0;j<fold-1;j++){
             tmpfold=new Vector<>();
@@ -50,9 +50,13 @@ public class DataSetHandler {
      * this function returns the test dataset after division
      * @return test dataset
      */
-    public Vector<Vector<item>> getTestDataset() {
+    Vector<Vector<item>> getTestDataset() {
 
         return DividedDataset.get(1);
+    }
+    Vector<Vector<item>> getTrainDataset() {
+
+        return DividedDataset.get(0);
     }
 
     /**
@@ -148,14 +152,11 @@ a.reset();}
     private Attribute UpdateCounts(Attribute attribute,Attribute target) {
 
         int index = this.attributes.indexOf(attribute);
-        int index2 = this.attributes.indexOf(target);
 
         Attribute newatt = new  Attribute();
         newatt.AttributeName = attribute.AttributeName;
-        item itemi2 = new item();
         for (Vector<item> items : this.data) {
             item itemi = items.get(index);
-            itemi2 = items.get(index2);
             newatt.addClass(itemi.getvalue());
         }
 //
@@ -186,7 +187,7 @@ a.reset();}
      * @param percent Percent of Dataset that should be in the training set.
      */
 
-    public void DivideTrainAndTest(Vector<Vector<item>> data, int percent) {
+    void DivideTrainAndTest(Vector<Vector<item>> data, int percent) {
         DividedDataset=new Vector<>();
         Vector<Vector<item>> train=new Vector<>();
         int n=data.size()*percent/100;

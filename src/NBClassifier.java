@@ -1,10 +1,18 @@
 import java.util.Vector;
 
 /**
+ * this class is a Naive Bayesian Classifier Implementation
  * Created by mohammad on 3/20/17.
  */
 public class NBClassifier implements Classifier {
 
+    /**
+     * this function calculate the probability for each class in the target attribute and claculates all of the conditional probabilities for
+     * other attributes given each class of the target attribute.
+     * @param trainingData this is the traing dataset
+     * @param attributes this is the list of attributes in the dataset
+     * @param target this is the target dataset
+     */
     @Override
     public void train(Vector<Vector<item>> trainingData, Vector<Attribute> attributes, Attribute target) {
 
@@ -49,7 +57,7 @@ public class NBClassifier implements Classifier {
 
 
     }
-    ProbStruct probStruct=new ProbStruct();
+    private ProbStruct probStruct=new ProbStruct();
     private double probability(Vector<Vector<item>> dataset, Attribute X, String attributeClass){
         double m=1;
         double k=X.AttributeClasses.size()+1;
@@ -59,7 +67,13 @@ public class NBClassifier implements Classifier {
         return (Math.log(nc+(m*p))-Math.log(n+m));
     }
 
-    double getitemprob(item it, ProbStruct p)
+    /**
+     *
+     * @param it this is an item
+     * @param p this is a probability structure that results from the training.
+     * @return the corresponding probability for the item
+     */
+    private double getitemprob(item it, ProbStruct p)
     {
         for (ProbStruct d :p.child  ) {
             if ((d.classname.equals(it.getvalue()))&(d.attribute.AttributeName.equals(it.getAttributeName())))
@@ -70,15 +84,21 @@ public class NBClassifier implements Classifier {
 
         return 0;
     }
+
+    /**
+     * this function works on an evidence and give use the probability of each class in the structure of NBPredResult
+     * @param data this is the evidence that the target value of it should be predicted.
+     * @return a list of classnames and corresponding probability returns
+     */
     @Override
     public Vector<NBPredResult> prediction(Vector<item> data)
     {
-        double x=0;
+        double x;
         Vector<NBPredResult> ret=new Vector<>();
         for (ProbStruct c:probStruct.child  ) {
             x=c.probability;
             for (item d :data ) {
-                if (d.getAttributeName()!=probStruct.attribute.AttributeName)
+                if (!d.getAttributeName().equals(probStruct.attribute.AttributeName))
                 {
                     double l=getitemprob(d,c);
                     x+=l;

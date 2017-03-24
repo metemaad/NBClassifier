@@ -40,12 +40,12 @@ public class FileHandler {
      * this function sets our dataset file name
      * @param filename dataset file name
      */
-    public void setFilename(String filename) {   _filename=filename;   }
+    void setFilename(String filename) {   _filename=filename;   }
 
     /**
      * this function class a function to read the dataset and convert it to vector structure.
      */
-    public Vector < Vector < item >> loadData()
+    Vector < Vector < item >> loadData()
     {
         return loadDataSet(_filename);
     }
@@ -65,7 +65,7 @@ public class FileHandler {
      * @return is a list of attributes(columns names) in the input line.
      */
     private static Vector < Attribute > GetItemsinoneLine(String line) {
-        String[] tmpln = line.replaceAll("  +|   +|\t|\r|\n", " ").split(" ");
+        String[] tmpln = line.replaceAll("  +|   +|\t|\r|\n|,", " ").split(" ");
         Vector < Attribute > Res = new Vector < > ();
         for (String s: tmpln) {
             Attribute a1 = new Attribute();
@@ -80,8 +80,8 @@ public class FileHandler {
      * @param line is a line of dataset.
      * @return is a list of items in the input line.
      */
-    public static Vector < String > GetItemsValuesinoneLine(String line) {
-        String[] tempLn = line.replaceAll("  +|   +|\t|\r|\n", " ").split(" ");
+    private static Vector < String > GetItemsValuesinoneLine(String line) {
+        String[] tempLn = line.replaceAll("  +|   +|\t|\r|\n|,", " ").split(" ");
         Vector < String > Res = new Vector < > ();
         Collections.addAll(Res, tempLn);
         return Res;
@@ -92,7 +92,7 @@ public class FileHandler {
      * @param filename the dataset file name.
      * @return full path of the dataset file.
      */
-    public static String getFilePath(String filename) {
+    static String getFilePath(String filename) {
         String CurrDir = System.getProperty("user.dir");
         return CurrDir + "/" + filename;
     }
@@ -104,7 +104,7 @@ public class FileHandler {
      * @param dbFileName dataset file name.
      * @return data set in vector structure.
      */
-     Vector < Vector < item >> loadDataSet(String dbFileName) {
+    private Vector < Vector < item >> loadDataSet(String dbFileName) {
         List < String > lines = new ArrayList < > ();
         dbFileName = getFilePath(dbFileName);
         Path path = Paths.get(dbFileName);

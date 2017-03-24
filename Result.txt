@@ -14,4 +14,4 @@
  overcast  mild  high  true  p  n 
  overcast  hot  normal  false  p  p 
  rain  mild  high  true  n  p
-Accuracy: 11 / 14 
+Accuracy: 11.000000 / 14.000000 

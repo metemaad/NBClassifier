@@ -1,0 +1,187 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.Id3
+Relation:     htotal
+Instances:    267
+Attributes:   23
+              OVERALL_DIAGNOSIS
+              F1
+              F2
+              F3
+              F4
+              F5
+              F6
+              F7
+              F8
+              F9
+              F10
+              F11
+              F12
+              F13
+              F14
+              F15
+              F16
+              F17
+              F18
+              F19
+              F20
+              F21
+              F22
+Test mode:4-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Id3
+
+
+F13 = False
+|  F16 = True
+|  |  F20 = True: True
+|  |  F20 = False
+|  |  |  F1 = True
+|  |  |  |  F3 = False
+|  |  |  |  |  F12 = False: True
+|  |  |  |  |  F12 = True: False
+|  |  |  |  F3 = True: False
+|  |  |  F1 = False: True
+|  F16 = False
+|  |  F11 = False
+|  |  |  F21 = False
+|  |  |  |  F17 = False
+|  |  |  |  |  F1 = True
+|  |  |  |  |  |  F22 = False
+|  |  |  |  |  |  |  F6 = False
+|  |  |  |  |  |  |  |  F9 = True: True
+|  |  |  |  |  |  |  |  F9 = False
+|  |  |  |  |  |  |  |  |  F10 = True
+|  |  |  |  |  |  |  |  |  |  F2 = False
+|  |  |  |  |  |  |  |  |  |  |  F14 = True: True
+|  |  |  |  |  |  |  |  |  |  |  F14 = False
+|  |  |  |  |  |  |  |  |  |  |  |  F7 = False: True
+|  |  |  |  |  |  |  |  |  |  |  |  F7 = True: True
+|  |  |  |  |  |  |  |  |  |  F2 = True: True
+|  |  |  |  |  |  |  |  |  F10 = False
+|  |  |  |  |  |  |  |  |  |  F20 = True: True
+|  |  |  |  |  |  |  |  |  |  F20 = False: False
+|  |  |  |  |  |  |  F6 = True: False
+|  |  |  |  |  |  F22 = True: False
+|  |  |  |  |  F1 = False
+|  |  |  |  |  |  F22 = False
+|  |  |  |  |  |  |  F20 = True
+|  |  |  |  |  |  |  |  F19 = True: False
+|  |  |  |  |  |  |  |  F19 = False
+|  |  |  |  |  |  |  |  |  F4 = True: True
+|  |  |  |  |  |  |  |  |  F4 = False
+|  |  |  |  |  |  |  |  |  |  F3 = False: True
+|  |  |  |  |  |  |  |  |  |  F3 = True: True
+|  |  |  |  |  |  |  F20 = False
+|  |  |  |  |  |  |  |  F3 = False
+|  |  |  |  |  |  |  |  |  F14 = True: False
+|  |  |  |  |  |  |  |  |  F14 = False
+|  |  |  |  |  |  |  |  |  |  F9 = True: True
+|  |  |  |  |  |  |  |  |  |  F9 = False
+|  |  |  |  |  |  |  |  |  |  |  F2 = False
+|  |  |  |  |  |  |  |  |  |  |  |  F4 = True: False
+|  |  |  |  |  |  |  |  |  |  |  |  F4 = False
+|  |  |  |  |  |  |  |  |  |  |  |  |  F5 = True: False
+|  |  |  |  |  |  |  |  |  |  |  |  |  F5 = False: False
+|  |  |  |  |  |  |  |  |  |  |  F2 = True: False
+|  |  |  |  |  |  |  |  F3 = True: False
+|  |  |  |  |  |  F22 = True
+|  |  |  |  |  |  |  F19 = True: False
+|  |  |  |  |  |  |  F19 = False
+|  |  |  |  |  |  |  |  F7 = False
+|  |  |  |  |  |  |  |  |  F8 = False
+|  |  |  |  |  |  |  |  |  |  F14 = True: True
+|  |  |  |  |  |  |  |  |  |  F14 = False
+|  |  |  |  |  |  |  |  |  |  |  F4 = True: True
+|  |  |  |  |  |  |  |  |  |  |  F4 = False: True
+|  |  |  |  |  |  |  |  |  F8 = True: True
+|  |  |  |  |  |  |  |  F7 = True: True
+|  |  |  |  F17 = True: True
+|  |  |  F21 = True
+|  |  |  |  F2 = False: True
+|  |  |  |  F2 = True
+|  |  |  |  |  F1 = True: True
+|  |  |  |  |  F1 = False: False
+|  |  F11 = True
+|  |  |  F10 = True: True
+|  |  |  F10 = False
+|  |  |  |  F20 = True: True
+|  |  |  |  F20 = False
+|  |  |  |  |  F1 = True: False
+|  |  |  |  |  F1 = False
+|  |  |  |  |  |  F2 = False
+|  |  |  |  |  |  |  F4 = True: True
+|  |  |  |  |  |  |  F4 = False
+|  |  |  |  |  |  |  |  F17 = False: False
+|  |  |  |  |  |  |  |  F17 = True: True
+|  |  |  |  |  |  F2 = True: True
+F13 = True
+|  F22 = False
+|  |  F7 = False
+|  |  |  F19 = True: True
+|  |  |  F19 = False
+|  |  |  |  F8 = False
+|  |  |  |  |  F1 = True: True
+|  |  |  |  |  F1 = False
+|  |  |  |  |  |  F2 = False
+|  |  |  |  |  |  |  F3 = False
+|  |  |  |  |  |  |  |  F12 = False: True
+|  |  |  |  |  |  |  |  F12 = True: False
+|  |  |  |  |  |  |  F3 = True: False
+|  |  |  |  |  |  F2 = True: True
+|  |  |  |  F8 = True
+|  |  |  |  |  F3 = False: True
+|  |  |  |  |  F3 = True
+|  |  |  |  |  |  F18 = False
+|  |  |  |  |  |  |  F12 = False
+|  |  |  |  |  |  |  |  F17 = False
+|  |  |  |  |  |  |  |  |  F5 = True
+|  |  |  |  |  |  |  |  |  |  F10 = True: True
+|  |  |  |  |  |  |  |  |  |  F10 = False: False
+|  |  |  |  |  |  |  |  |  F5 = False
+|  |  |  |  |  |  |  |  |  |  F1 = True: False
+|  |  |  |  |  |  |  |  |  |  F1 = False
+|  |  |  |  |  |  |  |  |  |  |  F4 = True
+|  |  |  |  |  |  |  |  |  |  |  |  F16 = True: True
+|  |  |  |  |  |  |  |  |  |  |  |  F16 = False: False
+|  |  |  |  |  |  |  |  |  |  |  F4 = False: True
+|  |  |  |  |  |  |  |  F17 = True: True
+|  |  |  |  |  |  |  F12 = True: True
+|  |  |  |  |  |  F18 = True: True
+|  |  F7 = True: True
+|  F22 = True
+|  |  F8 = False
+|  |  |  F14 = True
+|  |  |  |  F16 = True: True
+|  |  |  |  F16 = False: False
+|  |  |  F14 = False: True
+|  |  F8 = True: True
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         200               74.9064 %
+Incorrectly Classified Instances        67               25.0936 %
+Kappa statistic                          0.2277
+Mean absolute error                      0.2707
+Root mean squared error                  0.4845
+Relative absolute error                 82.3237 %
+Root relative squared error            119.7822 %
+Total Number of Instances              267
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.844     0.618      0.84      0.844     0.842      0.621    True
+                 0.382     0.156      0.389     0.382     0.385      0.621    False
+Weighted Avg.    0.749     0.523      0.747     0.749     0.748      0.621
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 179  33 |   a = True
+  34  21 |   b = False

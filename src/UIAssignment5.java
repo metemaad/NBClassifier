@@ -17,7 +17,7 @@ public class UIAssignment5 {
      */
     private Attribute _target;
 
-    public String getInputFile() {
+    String getInputFile() {
         String filename = "";
         boolean Invalid = false;
         while (!Invalid) {
@@ -42,7 +42,7 @@ public class UIAssignment5 {
      * @param attributes list of all attributes than can be selected as a target attribue.
      * @return target attribute.
      */
-    public Attribute selectTargetAttribute(Vector<Attribute> attributes) {
+    Attribute selectTargetAttribute(Vector<Attribute> attributes) {
         int target = 0;
         boolean Invalid = false;
         while (!Invalid) {
@@ -85,7 +85,7 @@ public class UIAssignment5 {
     public int verboseness() {
 
 
-        int target = 0;
+        int target;
 
             Scanner scan2 = new Scanner(System.in);
 
@@ -114,4 +114,58 @@ public class UIAssignment5 {
 
     }
 
+    boolean Doyouhaveatestdataset() {
+
+
+        int target;
+
+        Scanner scan2 = new Scanner(System.in);
+
+        System.out.print("Do you have a test dataset (0=yes 1=no): \n");
+
+
+
+        try {
+
+            target = scan2.nextInt();
+            if (target==0){
+                return true;
+            }
+            if (target==1){
+                return false;
+            }
+            return Doyouhaveatestdataset();
+
+
+        } catch (Exception e) {
+            System.out.print("\nnot valid.\n");
+
+        }
+
+
+
+
+        return false;
+
+
+    }
+
+    public int numberoffoldsincrossvalidation() {
+        int fold=1;
+        boolean Invalid = false;
+        while (!Invalid) {
+            Scanner scan2 = new Scanner(System.in);
+            System.out
+                    .print("please enter the number of folds in cross validation:");
+            fold = scan2.nextInt();
+
+            if ((fold >1)&(fold<100)) {
+                Invalid = true;
+            } else {
+                System.out.print("\r\nplease select a valid number of folds between 2 and 19:\r\n");
+            }
+
+        }
+        return fold;
+    }
 }

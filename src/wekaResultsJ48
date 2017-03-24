@@ -1,0 +1,84 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     htotal
+Instances:    267
+Attributes:   23
+              OVERALL_DIAGNOSIS
+              F1
+              F2
+              F3
+              F4
+              F5
+              F6
+              F7
+              F8
+              F9
+              F10
+              F11
+              F12
+              F13
+              F14
+              F15
+              F16
+              F17
+              F18
+              F19
+              F20
+              F21
+              F22
+Test mode:4-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+F13 = False
+|   F17 = False
+|   |   F16 = True: True (26.0/3.0)
+|   |   F16 = False
+|   |   |   F21 = False
+|   |   |   |   F10 = True
+|   |   |   |   |   F22 = False: True (25.0/5.0)
+|   |   |   |   |   F22 = True: False (2.0)
+|   |   |   |   F10 = False
+|   |   |   |   |   F22 = False
+|   |   |   |   |   |   F20 = True: True (10.0/3.0)
+|   |   |   |   |   |   F20 = False: False (37.0/8.0)
+|   |   |   |   |   F22 = True: True (15.0/5.0)
+|   |   |   F21 = True: True (8.0/1.0)
+|   F17 = True: True (12.0)
+F13 = True: True (132.0/7.0)
+
+Number of Leaves  : 	9
+
+Size of the tree : 	17
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         213               79.7753 %
+Incorrectly Classified Instances        54               20.2247 %
+Kappa statistic                          0.3817
+Mean absolute error                      0.2472
+Root mean squared error                  0.3784
+Relative absolute error                 75.1822 %
+Root relative squared error             93.5518 %
+Total Number of Instances              267
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.873     0.491      0.873     0.873     0.873      0.744    True
+                 0.509     0.127      0.509     0.509     0.509      0.744    False
+Weighted Avg.    0.798     0.416      0.798     0.798     0.798      0.744
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 185  27 |   a = True
+  27  28 |   b = False
